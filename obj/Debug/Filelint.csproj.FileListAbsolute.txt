@@ -1,0 +1,6 @@
+C:\Users\gaydale21\Desktop\Filelint-master\Filelint\obj\Debug\Filelint.csprojResolveAssemblyReference.cache
+C:\Users\gaydale21\Desktop\Filelint-master\Filelint\bin\Debug\Filelint.exe.config
+C:\Users\gaydale21\Desktop\Filelint-master\Filelint\bin\Debug\Filelint.exe
+C:\Users\gaydale21\Desktop\Filelint-master\Filelint\bin\Debug\Filelint.pdb
+C:\Users\gaydale21\Desktop\Filelint-master\Filelint\obj\Debug\Filelint.exe
+C:\Users\gaydale21\Desktop\Filelint-master\Filelint\obj\Debug\Filelint.pdb
