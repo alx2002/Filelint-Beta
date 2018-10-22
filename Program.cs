@@ -18,7 +18,7 @@ namespace DuplicateFileFinder
 
 namespace DuplicateFileFinder
 {
-    class Program
+     public class Program
     {
         
         static void Main(string[] args)
@@ -34,23 +34,28 @@ namespace DuplicateFileFinder
             if (args.Length > 0)
                 path = args[0] as string;
             else
-                path = @"C:\Users\USER\Desktop\as3";
-            //...Looks for a Folder named E
+                 path = @"C:\Users\gaydale21\Desktop\Test1";
+            Console.ReadKey();
+         
+            if (!Directory.Exists(path))
+            {
+            	Console.WriteLine("{0} is not a valid file or directory", path);
+            }
+              
             
-//if (path.Exists = false)
-       // {
-        //    Console.WriteLine(File.Exists(curFile) ?  "Folder does not exist.");
-        // }
-        //If folder does not exist write  "Folder does not exist."
-       
-        
-            
-
-            //Get all files from given directory
-
-
+            if (Directory.Exists (path))
+            {
+            	Console.WriteLine("Directory exists" + "...");
+            	
+            }
+            else if(Directory.Exists(path))
+            {
+            	Console.WriteLine("{0} is not a valid file or directory.", path);
+            }
+   
             var fileLists = Directory.GetFiles(path);
-		
+            
+            
             
             int totalFiles = fileLists.Length;
 			Console.ForegroundColor = ConsoleColor.White;
@@ -115,9 +120,10 @@ namespace DuplicateFileFinder
                 	Console.TreatControlCAsInput = true;
                 
                     cki = Console.ReadKey();
-         if((cki.Modifiers & ConsoleModifiers.Alt) != 0) Console.Write("ALT+");
+         /*if((cki.Modifiers & ConsoleModifiers.Alt) != 0) Console.Write("ALT+");
          if((cki.Modifiers & ConsoleModifiers.Shift) != 0) Console.Write("SHIFT+");
-         if((cki.Modifiers & ConsoleModifiers.Control) != 0) Console.Write("CTL+");
+         if((cki.Modifiers & ConsoleModifiers.Control) != 0) Console.Write("CTL+"); 
+          */
          Console.WriteLine(cki.Key.ToString());
                 Console.ReadKey();
                
