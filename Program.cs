@@ -34,8 +34,9 @@ namespace DuplicateFileFinder
             if (args.Length > 0)
                 path = args[0] as string;
             else
-                 path = @"C:\Users\gaydale21\Desktop\Test1";
+                 path = @"C:\Users\Desktop\Test1";
             Console.ReadKey();
+		Console.Clear();
          
             if (!Directory.Exists(path))
             {
