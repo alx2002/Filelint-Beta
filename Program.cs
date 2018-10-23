@@ -16,50 +16,61 @@ namespace DuplicateFileFinder
 }
 
 
+    
+
+
 namespace DuplicateFileFinder
 {
-     public class Program
+    public class Program
     {
-        
+
         static void Main(string[] args)
         {
             string path;
             ConsoleKeyInfo cki;
             //identifies the console key that was pressed.
             double totalSize = 0;
-            
-            
+
+
             //pass directory path as argument to command line
-            
+
             if (args.Length > 0)
                 path = args[0] as string;
             else
-                 path = @"C:\Users\Desktop\Test1";
-            Console.ReadKey();
-		Console.Clear();
-         
+                path = @"C:\Users\Alex\Desktop\Test11";
+            //if this is wrong will throw exception
+
+            
+            Console.Clear();
+
             if (!Directory.Exists(path))
             {
-            	Console.WriteLine("{0} is not a valid file or directory", path);
+                Console.WriteLine("{0} is not a valid file or directory", path);
             }
-              
-            
-            if (Directory.Exists (path))
+
+
+            if (Directory.Exists(path))
             {
-            	Console.WriteLine("Directory exists" + "...");
-            	
+                Console.WriteLine("Directory Location: {0} ", path);
+
             }
-            else if(Directory.Exists(path))
+            else if (Directory.Exists(path))
             {
-            	Console.WriteLine("{0} is not a valid file or directory.", path);
+                Console.WriteLine("{0} is not a valid file or directory.", path);
             }
-   
-            var fileLists = Directory.GetFiles(path);
+
+
+
+        
+
+        var fileLists = Directory.GetFiles(path);
+            // will send you here if path is invalid.
             
-            
-            
+
+
+
             int totalFiles = fileLists.Length;
-			Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Files detected:{0} \n", totalFiles);
             Console.ForegroundColor = ConsoleColor.White;
 
@@ -72,7 +83,7 @@ namespace DuplicateFileFinder
             foreach (var item in fileLists)
             {
                 using (var ReadStream = new FileStream(item, FileMode.Open, FileAccess.Read))
-              	// open stream and read
+                // open stream and read
                 {
                     info.Add(new FileNameandHash()
                     {
@@ -91,7 +102,7 @@ namespace DuplicateFileFinder
             ToDelete.AddRange(SList.SelectMany(f => f.Files.Skip(1)).ToList());
             Console.WriteLine("Duplicates detected:{0}\n", ToDelete.Count);
             Console.ForegroundColor = ConsoleColor.White;
-           
+
             //list all files to be deleted and count total disk space to be empty after delete
             //chooses one of the files to keep, so if there is 3 (A,B,C) duplicates it keeps B and deletes A and C
             if (ToDelete.Count > 0)
@@ -105,31 +116,31 @@ namespace DuplicateFileFinder
                 }
             }
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("\nRemoved: {0}  MEGABYTE(S)\n", Math.Round((totalSize / 10000), 4).ToString());
+            Console.WriteLine("\nWill free: {0}  MEGABYTE(S)\n", Math.Round((totalSize / 10000), 4).ToString());
             Console.ForegroundColor = ConsoleColor.White;
             //delete duplicate files
             if (0 < ToDelete.Count)
-            	// Do this if count if greater than 0
+            // Do this if count if greater than 0
             {
                 Console.WriteLine("Press I to initilize deletion.");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Press the Q key to quit. \n");
                 Console.ForegroundColor = ConsoleColor.White;
                 do
-                	
+
                 {
-                	Console.TreatControlCAsInput = true;
-                
+                    Console.TreatControlCAsInput = true;
+
                     cki = Console.ReadKey();
-         /*if((cki.Modifiers & ConsoleModifiers.Alt) != 0) Console.Write("ALT+");
-         if((cki.Modifiers & ConsoleModifiers.Shift) != 0) Console.Write("SHIFT+");
-         if((cki.Modifiers & ConsoleModifiers.Control) != 0) Console.Write("CTL+"); 
-          */
-         Console.WriteLine(cki.Key.ToString());
-                Console.ReadKey();
-               
+                    /*if((cki.Modifiers & ConsoleModifiers.Alt) != 0) Console.Write("ALT+");
+                    if((cki.Modifiers & ConsoleModifiers.Shift) != 0) Console.Write("SHIFT+");
+                    if((cki.Modifiers & ConsoleModifiers.Control) != 0) Console.Write("CTL+"); 
+                     */
+                    Console.WriteLine(cki.Key.ToString());
+                    Console.ReadKey();
+
                     Console.WriteLine(" You pressed {0}\n", cki.Key.ToString());
-                    
+
                     Console.ForegroundColor = ConsoleColor.White;
                     if (cki.Key == ConsoleKey.I)
                     {
@@ -141,13 +152,13 @@ namespace DuplicateFileFinder
                     }
                     Console.WriteLine("Press Q key to quit.\n");
                 } while (cki.Key != ConsoleKey.Q);
-                
-                
-                
+
+
+
             }
             else
             {
-            	Console.ForegroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("\nNo files to delete.");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("\nPress ENTER to exit.");
