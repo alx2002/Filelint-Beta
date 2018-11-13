@@ -1,10 +1,9 @@
 using System;
-using System.Text;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
-//using System.Collections;
+
 
 namespace DuplicateFileFinder
 {
@@ -37,7 +36,7 @@ namespace DuplicateFileFinder
                 if (args.Length > 0)
                     path = args[0] as string;
                 else
-                    path = @"C:\Users\Alex\Desktop\Test1"; //@"C:\Users\Alex\Desktop\Test11";
+                    path = @"C:\Users\Alex\Desktop\Test11"; //@"C:\Users\Alex\Desktop\Test11";
                                                            //if this is not found on your system throw exception
                                                            //folder location
 
@@ -93,6 +92,7 @@ namespace DuplicateFileFinder
                         {
                             FileName = item,
                             FileHash = BitConverter.ToString(MD5.Create().ComputeHash(ReadStream)),
+                       
                             //Hash MD5 for each file
                         });
                     }
