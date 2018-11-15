@@ -33,12 +33,13 @@ namespace DuplicateFileFinder
 
               
                 //pass directory path as argument to command line
-
+                Console.WriteLine("Example --C:/users/testing/desktop/photoalbum2018");
                 if (args.Length > 0)
                     path = args[0] as string;
                 
                 else
                 	Console.WriteLine("Enter a path:");
+                
                
                 
                   path = Console.ReadLine();
@@ -142,7 +143,7 @@ namespace DuplicateFileFinder
 
                         //Console.WriteLine(" You pressed {0}\n", cki.Key.ToString());
 
-                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ForegroundColor = ConsoleColor.Green;
                         if (cki.Key == ConsoleKey.I)
                         	
                         {
