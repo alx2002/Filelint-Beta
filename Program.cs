@@ -11,6 +11,7 @@ namespace DuplicateFileFinder
     {
         public string FileName { get; set; }
         public string FileHash { get; set; }
+        //public static string GetDirectoryName (string path);
     }
 }
  
@@ -30,7 +31,7 @@ namespace DuplicateFileFinder
                 decimal totalSize = 0;
                 //double
 
-               
+              
                 //pass directory path as argument to command line
 
                 if (args.Length > 0)
@@ -66,7 +67,7 @@ namespace DuplicateFileFinder
                 }
 
 
-                var fileLists = Directory.GetFiles(path);
+                var fileLists = Directory.GetFiles(path, "*", SearchOption.AllDirectories);
 
 
                 // will send you here if path is invalid.
@@ -79,7 +80,9 @@ namespace DuplicateFileFinder
                 List<organizer> info = new List<organizer>();
                 List<string> ToDelete = new List<string>();
                 info.Clear();
-                //Iterate through all the files by file hash code
+                // <Summary>
+                // Iterate through all the files by file hash code
+                // <Summary/>
                 foreach (var item in fileLists)
                 {
                     using (var ReadStream = new FileStream(item, FileMode.Open, FileAccess.Read))
@@ -156,7 +159,7 @@ namespace DuplicateFileFinder
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("\nNo files to delete.");
+                    Console.WriteLine("\nNo duplicates to delete.");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("\nPress ENTER to exit.");
                     Console.ForegroundColor = ConsoleColor.White;
@@ -166,4 +169,3 @@ namespace DuplicateFileFinder
         }
     }
 }
-   
