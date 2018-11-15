@@ -4,11 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 
-//using System.Linq;
-
-
-
-
 
 namespace DuplicateFileFinder
 {
@@ -63,16 +58,13 @@ namespace DuplicateFileFinder
                 }
     
                 else if (Directory.Exists (path))
-                
-  
+
                 	
                 {
                     Console.WriteLine(" <{0}> is not a valid file or directory.", path);
                     
                 }
-            	
-            	
-            	 
+
 
                 var fileLists = Directory.GetFiles(path);
 
@@ -103,12 +95,12 @@ namespace DuplicateFileFinder
                     }
                 }
                 //group  by file hash code
-                var SList = info.GroupBy(f => f.FileHash)
+                var SList = info.GroupBy(first => first.FileHash)
                     .Select(g => new { FileHash = g.Key, Files = g.Select(z => z.FileName).ToList() });
 
 
                 //keeping first item of each group as is and identify rest as duplicate files usedb to delete
-                ToDelete.AddRange(SList.SelectMany(f => f.Files.Skip(1)).ToList());
+                ToDelete.AddRange(SList.SelectMany(first => first.Files.Skip(1)).ToList());
                 Console.WriteLine("Duplicates detected:{0}\n", ToDelete.Count);
                 Console.ForegroundColor = ConsoleColor.White;
                 //list all files to be deleted and count total disk space to be empty after delete
@@ -159,8 +151,6 @@ namespace DuplicateFileFinder
                         }
                         Console.WriteLine("Press Q key to quit.\n");
                     } while (cki.Key != ConsoleKey.Q);
-
-
 
                 }
                 else
