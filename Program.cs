@@ -4,6 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 
+//using System.Linq;
+
+
+
+
 
 namespace DuplicateFileFinder
 {
@@ -13,7 +18,7 @@ namespace DuplicateFileFinder
         public string FileHash { get; set; }
     }
 }
-
+ 
     namespace DuplicateFileFinder
     {
         public class Program
@@ -48,7 +53,7 @@ namespace DuplicateFileFinder
                 if (!Directory.Exists(path))
                 {
                
-                    Console.WriteLine("{0} is not a valid file or directory", path);
+                    Console.WriteLine(" <{0}/> is not a valid file or directory.", path);
                 }
 
                 if (Directory.Exists(path))
@@ -62,7 +67,7 @@ namespace DuplicateFileFinder
   
                 	
                 {
-                    Console.WriteLine("{0} is not a valid file or directory.", path);
+                    Console.WriteLine(" <{0}> is not a valid file or directory.", path);
                     
                 }
             	
@@ -82,7 +87,7 @@ namespace DuplicateFileFinder
                 List<organizer> info = new List<organizer>();
                 List<string> ToDelete = new List<string>();
                 info.Clear();
-                //loop through all the files by file hash code
+                //Iterate through all the files by file hash code
                 foreach (var item in fileLists)
                 {
                     using (var ReadStream = new FileStream(item, FileMode.Open, FileAccess.Read))
@@ -119,11 +124,12 @@ namespace DuplicateFileFinder
                     }
                 }
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("\nWill free: {0}  MEGABYTE(S)\n", Math.Round((totalSize / 10000), 4).ToString());
+                
+                Console.WriteLine("\nWill remove: {0}  mbytes\n", Math.Round((totalSize / 10000), 4).ToString());
                 Console.ForegroundColor = ConsoleColor.White;
                 //delete duplicate files
                 if (0 < ToDelete.Count)
-                // Do this if count if greater than 0
+                // do this if count if greater than 0
                 {
                     Console.WriteLine("Press I to initilize deletion.");
                     Console.ForegroundColor = ConsoleColor.White;
@@ -139,7 +145,7 @@ namespace DuplicateFileFinder
                         Console.WriteLine(cki.Key.ToString());
                         Console.ReadKey();
 
-                        Console.WriteLine(" You pressed {0}\n", cki.Key.ToString());
+                        //Console.WriteLine(" You pressed {0}\n", cki.Key.ToString());
 
                         Console.ForegroundColor = ConsoleColor.White;
                         if (cki.Key == ConsoleKey.I)
