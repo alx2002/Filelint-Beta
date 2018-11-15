@@ -38,16 +38,16 @@ namespace DuplicateFileFinder
                 
                 else
                 	Console.WriteLine("Enter a path:");
+               
                 
                   path = Console.ReadLine();
-                     //path = @"C:\Users\Alex\Desktop\Test11";
-                                                           //if this is not found on your system throw exception
 
 
                 Console.Clear();
 		
                 if (!Directory.Exists(path))
                 {
+               
                     Console.WriteLine("{0} is not a valid file or directory", path);
                 }
 
@@ -56,16 +56,21 @@ namespace DuplicateFileFinder
                     Console.WriteLine("Directory Location: {0} ", path);
 
                 }
-          
-                else if (Directory.Exists(path))
+    
+                else if (Directory.Exists (path))
                 
-               
+  
+                	
                 {
                     Console.WriteLine("{0} is not a valid file or directory.", path);
                     
                 }
+            	
+            	
+            	 
 
                 var fileLists = Directory.GetFiles(path);
+
 
                 // will send you here if path is invalid.
 
@@ -87,7 +92,7 @@ namespace DuplicateFileFinder
                         {
                             FileName = item,
                             FileHash = BitConverter.ToString(MD5.Create().ComputeHash(ReadStream)),
-                       
+                   
                             //Hash MD5 for each file
                         });
                     }
@@ -143,7 +148,7 @@ namespace DuplicateFileFinder
                             Console.WriteLine("Deleting files... \n");
                             Console.ForegroundColor = ConsoleColor.Green;
                             ToDelete.ForEach(File.Delete);
-                            Console.WriteLine("Files deleted successfully. \n");
+                            Console.WriteLine("{0} files deleted successfully. \n", ToDelete.Count);
                             Console.ForegroundColor = ConsoleColor.Green;
                         }
                         Console.WriteLine("Press Q key to quit.\n");
@@ -164,5 +169,5 @@ namespace DuplicateFileFinder
             }
         }
     }
-    }
+}
    
