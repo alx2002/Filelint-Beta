@@ -11,7 +11,7 @@ namespace DuplicateFileFinder
     {
         public string FileName { get; set; }
         public string FileHash { get; set; }
-        //public static string GetDirectoryName (string path);
+       
     }
 }
  
@@ -33,15 +33,13 @@ namespace DuplicateFileFinder
 
               
                 //pass directory path as argument to command line
-                Console.WriteLine("Example --C:/users/testing/desktop/photoalbum2018");
+                Console.WriteLine("Example --F:/2018/album");
                 if (args.Length > 0)
                     path = args[0] as string;
                 
                 else
                 	Console.WriteLine("Enter a path:");
-                
-               
-                
+                         
                   path = Console.ReadLine();
 
 
@@ -77,7 +75,8 @@ namespace DuplicateFileFinder
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Files detected:{0} \n", totalFiles);
                 Console.ForegroundColor = ConsoleColor.White;
-
+                
+				//Polymorphism 
                 List<organizer> info = new List<organizer>();
                 List<string> ToDelete = new List<string>();
                 info.Clear();
@@ -85,6 +84,7 @@ namespace DuplicateFileFinder
                 // Iterate through all the files by file hash code
                 // <Summary/>
                 foreach (var item in fileLists)
+                	//make a call
                 {
                     using (var ReadStream = new FileStream(item, FileMode.Open, FileAccess.Read))
                     // open stream and read
@@ -117,13 +117,12 @@ namespace DuplicateFileFinder
                         Console.WriteLine(item);
                         FileInfo fi = new FileInfo(item);
                         totalSize += fi.Length;
+                        // += addition assignment operator
                     }
                 }
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 
-                Console.WriteLine("\nWill remove: {0}  mbytes\n", Math.Round((totalSize / 10000), 4).ToString());
-                Console.ForegroundColor = ConsoleColor.White;
-                //delete duplicate files
+              //delete duplicate files
                 if (0 < ToDelete.Count)
                 // do this if count if greater than 0
                 {
